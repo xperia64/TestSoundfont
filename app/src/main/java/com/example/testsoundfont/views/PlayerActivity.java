@@ -39,11 +39,11 @@ public class PlayerActivity extends BaseActivity {
 
         JNIHandler.timidityReady();
 
-        track = new AudioTrack(AudioManager.STREAM_MUSIC, rate,
+        /*track = new AudioTrack(AudioManager.STREAM_MUSIC, rate,
                 (TimiditySettings.mono == 2) ? AudioFormat.CHANNEL_OUT_STEREO : AudioFormat.CHANNEL_OUT_MONO,
                 (TimiditySettings.isSixteenBits) ? AudioFormat.ENCODING_PCM_16BIT : AudioFormat.ENCODING_PCM_8BIT, buffer,
-                AudioTrack.MODE_STREAM);
-        JNIHandler.play(this, track, selectedSong.getFilePath() + "/" + selectedSong.getFilePath());
+                AudioTrack.MODE_STREAM);*/
+        JNIHandler.play(this, selectedSong.getFilePath() + "/" + selectedSong.getSongName());
     }
 
     @Override

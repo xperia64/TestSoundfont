@@ -2,6 +2,8 @@ package com.example.testsoundfont.models;
 
 import android.net.Uri;
 
+import java.io.Serializable;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,8 +17,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor(suppressConstructorProperties = true)
 @RequiredArgsConstructor
-public class Song extends BaseModel {
+public class Song extends BaseModel implements Serializable {
     private String songName;
     private String filePath;
-    private Uri uri;
 }

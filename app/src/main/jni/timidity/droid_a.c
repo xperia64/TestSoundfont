@@ -19,7 +19,7 @@
 #include "instrum.h"
 #include "playmidi.h"
 #include "miditrace.h"
-//#include <android/log.h>
+#include <android/log.h>
 static int open_output(void); /* 0=success, 1=warning, -1=fatal error */
 static void close_output(void);
 static int output_data(char *buf, int32 bytes);
@@ -28,6 +28,7 @@ int position = 0;
 int samples = 0;
 //int samples_helper=0;
 /* export the playback mode */
+
 #define dpm droid_play_mode
 
 PlayMode dpm = {

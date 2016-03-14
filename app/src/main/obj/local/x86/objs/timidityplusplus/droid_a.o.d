@@ -67,7 +67,8 @@ obj/local/x86/objs/timidityplusplus/droid_a.o: jni/timidity/droid_a.c \
  jni/timidity/common.h jni/timidity/../libarc/url.h \
  jni/timidity/../utils/mblock.h jni/timidity/output.h \
  jni/timidity/controls.h jni/timidity/../utils/timer.h \
- jni/timidity/instrum.h jni/timidity/playmidi.h jni/timidity/miditrace.h
+ jni/timidity/instrum.h jni/timidity/playmidi.h jni/timidity/miditrace.h \
+ C:/Users/Administrator/AppData/Local/Android/sdk/ndk-bundle/platforms/android-9/arch-x86/usr/include/android/log.h
 
 jni/timidity/../config.h:
 
@@ -216,3 +217,5 @@ jni/timidity/instrum.h:
 jni/timidity/playmidi.h:
 
 jni/timidity/miditrace.h:
+
+C:/Users/Administrator/AppData/Local/Android/sdk/ndk-bundle/platforms/android-9/arch-x86/usr/include/android/log.h:

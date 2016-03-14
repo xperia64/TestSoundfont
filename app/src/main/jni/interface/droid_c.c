@@ -271,13 +271,16 @@ static int ctl_read(int32 *valp)
 
 int play_list(int number_of_files, char *list_of_files[])
 {
+	andro_timidity_config_print("TIMIDITY", "IN play_list %s", "wtf");
 	lyric_col=2;
 	memset(&lyric_buf, 0, 300);
 	return ctl_pass_playing_list(number_of_files, list_of_files);
 }
 static int ctl_pass_playing_list(int number_of_files, char *list_of_files[]) {
-	if(number_of_files)
+	if(number_of_files) {
+		andro_timidity_log_print( "TIMIDITY", "number of files : %d", number_of_files);
 		return play_midi_file(list_of_files[0]);
+	}
 	return 0;
 
 }

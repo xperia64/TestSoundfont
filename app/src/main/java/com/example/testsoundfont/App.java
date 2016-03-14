@@ -50,11 +50,13 @@ public class App extends Application {
                 .setUseDefaultSharedPreference(true)
                 .build();
 
-        JNIHandler.getInstance(this);
 
         loadLibraries();
         loadSoundFontsFromSdcard();
-        loadMidiFilesFromAssets();
+        //loadMidiFilesFromAssets();
+        loadMidiFilesFromSdcard();
+
+        JNIHandler.getInstance(this);
     }
 
     private void loadLibraries() {
@@ -96,12 +98,9 @@ public class App extends Application {
             }
 
             sfs.add(new SoundFont(file.getName(), file.getParent() + "/", false));
-            //Logger.i("Sdcard: ", uri.getPath().substring(0, uri.getPath().lastIndexOf('/' + 1)));
-            //Logger.i("Sdcard: ", uri.getLastPathSegment());
         }
 
         Prefs.putString(PrefsKeys.SOUND_FONT.name(), Serializer.serialize(sfs));
-        //this.setValue(AppKeys.ALL_SOUNDFONT, sfs);
     }
 
     private void loadSoundFontsFromAssets() {
@@ -132,6 +131,37 @@ public class App extends Application {
         }
     }
 
+    private void loadMidiFilesFromSdcard() {
+        File songs = new File(JNIHandler.getInstance(this).getRootStorage().getAbsolutePath() + "/midi/");
+        ArrayList<Song> sfs = null;
+        try {
+            sfs = (ArrayList<Song>) Serializer.deserialize(Prefs.getString(PrefsKeys.SONG.name(), Serializer.serialize(new ArrayList<Song>())));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if(sfs == null) {
+            sfs = new ArrayList<>();
+        }
+        for(File file : songs.listFiles()) {
+            if (!file.getName().endsWith(".mid")) {
+                continue;
+            }
+            boolean alreadyExist = false;
+            for (Song sf : sfs) {
+                if (file.getName().equals(sf.getSongName())) {
+                    alreadyExist = true;
+                }
+            }
+            if (alreadyExist) {
+                continue;
+            }
+
+            sfs.add(new Song(file.getName(), file.getParent() + "/"));
+        }
+
+        Prefs.putString(PrefsKeys.SONG.name(), Serializer.serialize(sfs));
+    }
+
     private void loadMidiFilesFromAssets() {
         AssetManager am = getAssets();
         String path = "midi";
@@ -145,8 +175,8 @@ public class App extends Application {
                         continue;
                     }
 
-                    Uri uri = Uri.parse("file:///android_asset/" + path + "/" + list[i]);
-                    songs.add(new Song(uri.getLastPathSegment().substring(0, uri.getLastPathSegment().lastIndexOf(".")), uri.getPath(), uri));
+                    //Uri uri = Uri.parse("file:///android_asset/" + path + "/" + list[i]);
+                    //songs.add(new Song(uri.getLastPathSegment(), uri.getPat);
                     Logger.i("Assets: ", path + "/" + list[i]);
                 }
 

@@ -5,7 +5,8 @@ package com.example.testsoundfont.enums;
  */
 public enum  PrefsKeys {
 
-    SOUND_FONT("sound_font");
+    SOUND_FONT("sound_font"),
+    SONG("song");
 
     private String key;
     PrefsKeys(String soundFont) {
