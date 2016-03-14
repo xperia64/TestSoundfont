@@ -43,7 +43,7 @@ public class PlayerActivity extends BaseActivity {
                 (TimiditySettings.mono == 2) ? AudioFormat.CHANNEL_OUT_STEREO : AudioFormat.CHANNEL_OUT_MONO,
                 (TimiditySettings.isSixteenBits) ? AudioFormat.ENCODING_PCM_16BIT : AudioFormat.ENCODING_PCM_8BIT, buffer,
                 AudioTrack.MODE_STREAM);*/
-        JNIHandler.play(this, selectedSong.getFilePath() + "/" + selectedSong.getSongName());
+        JNIHandler.play(this, selectedSong.getFilePath() + selectedSong.getSongName());
     }
 
     @Override

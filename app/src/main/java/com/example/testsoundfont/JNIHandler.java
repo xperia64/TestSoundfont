@@ -286,8 +286,8 @@ public class JNIHandler {
         }
 
         Logger.i("song");
-        instance.track.play();
         loadSongTimidity(songTitle);
+        instance.track.play();
         Logger.i("welcome play");
 
         return 0;
